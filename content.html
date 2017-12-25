@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>css-content</title>
+  <style>
+    .item::before{
+      content:'Hello';
+    }
+    .item::after{
+      content:'world';
+    }
+    ul{
+      list-style:none;
+      counter-reset:num;
+    }
+    ul li::before{
+      counter-increment:num;
+      content:'List-' counter(num) '-item ';
+    }
+    body{
+      counter-reset:num1 0 num3 0 num4 0;
+    }
+    h1::before{
+      counter-increment: num1;
+      content:'The ' counter(num1) ' ';
+    }
+    h1{
+      counter-reset:num2;
+    }
+    h2::before{
+      counter-increment:num2;
+      content:'section ' counter(num1) '.' counter(num2);
+    }
+    input:checked{
+      counter-increment: num3;
+    }
+    p::after{
+      content:counter(num3)'个';
+    }
+    input:nth-of-type(4):checked{
+      counter-increment: num4 5;
+    }
+    input:nth-of-type(5):checked{
+      counter-increment: num4 7;
+    }
+    input:nth-of-type(6):checked{
+      counter-increment: num4 2;
+    }
+    input:nth-of-type(7):checked{
+      counter-increment: num4 1;
+    }
+    .show::after{
+      content:'Count:' counter(num4);
+    }
+  </style>
+</head>
+<body>
+  <!-- 伪元素用法 -->
+  <div class="item"> item </div>
+  <!-- css计数器 -->
+  <ul>
+    <li>AAAAAA</li>
+    <li>BBBBBB</li>
+    <li>CCCCCC</li>
+  </ul>
+  <!-- 复杂用法 -->
+  <h1>Title</h1>
+  <h2>这是一段内容</h2>
+  <h2>这是一段内容</h2>
+  <h1>Title</h1>
+  <h2>这是一段内容</h2>
+  <h1>Title</h1>
+  <h2>这是一段内容</h2>
+  <h2>这是一段内容</h2>
+  <h2>这是一段内容</h2>
+  <!-- 用计数器实现获取input checked选择的数量 -->
+  CSS <input type="checkbox">
+  HTML5 <input type="checkbox">
+  Javascript <input type="checkbox">
+  <p>你一共选择了</p>
+  <!-- 手动更改counter-increment数值大小 -->
+  5 <input type="checkbox" name="" id="" class="add">
+  7 <input type="checkbox" name="" id="" class="add">
+  2 <input type="checkbox" name="" id="" class="add">
+  1 <input type="checkbox" name="" id="" class="add">
+  <p class="show"></p>
+</body>
+</html>
